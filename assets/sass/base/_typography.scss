@@ -1,2 +1,22 @@
+@use '../themes' as theme;
+@use '../abstracts/' as variables;
+
 $font-stack : ('Roboto', san-serif);
 $primary-font: $font-stack;
+$primary-letter-spacing: 0px;
+
+body {
+    font-family: $primary-font;
+    letter-spacing: $primary-letter-spacing;
+    @include theme.theme;
+}
+
+a {
+    color: variables.$secondary-color;
+    text-decoration: none;
+    transition: all ease-in-out 0.4s;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

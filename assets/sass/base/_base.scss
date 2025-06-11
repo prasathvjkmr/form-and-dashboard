@@ -1,5 +1,26 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts//mixins' as center;
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    min-height: 100dvh;
+    @include center.verical-horizontal-center;
+}
+
+.register-container {
+    max-width: 850px;
+    background-color: variables.$primary-bg-color;
+    padding: variables.$spacing-lg * 2.4 variables.$spacing-lg * 3;
+    margin: auto;
+    border: 1px solid variables.$primary-border-color;
+    border-radius: variables.$border-radius-base * 3;
+
+    @media (max-width:768px) {
+        padding: variables.$spacing-lg * 2 variables.$spacing-lg * 1.5;
+    }
 }

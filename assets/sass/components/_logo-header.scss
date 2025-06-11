@@ -1,0 +1,7 @@
+@use '../abstracts/mixins' as center;
+@use '../abstracts/variables' as variables;
+
+.logo-header {
+    @include center.verical-horizontal-center;
+    margin: 0 0 variables.$spacing-md * 3;
+}

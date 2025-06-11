@@ -1,12 +1,6 @@
-@use '../abstracts/color' as color;
-@use '../base/typography' as font;
+@use '../abstracts' as color;
 
 @mixin theme ($color: color.$primary-color, $bg-color: color.$primary-bg-color) {
     color: $color;
     background-color: $bg-color;
-}
-
-body {
-    @include theme;
-    font-family: font.$primary-font;
 }

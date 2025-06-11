@@ -1,0 +1,5 @@
+@mixin verical-horizontal-center($flex: flex, $justify-content-center: center, $align-items-center: center) {
+    display: $flex;
+    justify-content: $justify-content-center;
+    align-items: $align-items-center;
+}

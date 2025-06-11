@@ -1,0 +1,95 @@
+@use '../abstracts/variables' as variables;
+
+.register-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: variables.$spacing-xl variables.$spacing-lg;
+    
+    @media (max-width:768px) {
+        grid-template-columns: 1fr;
+        gap: variables.$spacing-sm;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        display: block;
+        margin-bottom: variables.$spacing-sm / 2;
+        font-size: variables.$font-base-size;
+
+        & .required {
+            color: variables.$primary-error-color;
+            margin-left: 2px;
+        }
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='password'],
+    input[type='tel'] {
+        width: 100%;
+        height: variables.$font-base-size * 3;
+        border: 1px solid variables.$primary-input-border-color;
+        border-radius: variables.$border-radius-base;
+        padding: variables.$spacing-sm;
+        font-size: variables.$font-base-size;
+
+        &:focus {
+            outline: none;
+            border-color: variables.$primary-color;
+            box-shadow: 0 0 0 2px rgba($color: variables.$primary-color, $alpha: 0.25);
+        }
+    }
+
+    .form-checkbox {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-block: variables.$spacing-sm variables.$spacing-md;
+
+        input[type='checkbox'] {
+            margin-right: variables.$spacing-sm;
+            min-width: 16px;
+            min-height: 16px;
+            cursor: pointer;
+        }
+
+        label {
+            font-size: variables.$font-base-sm;
+            line-height: 1.5;
+            max-width: 80%;
+            user-select: none;
+        }
+    }
+
+    button {
+        background-color: variables.$secondary-color;
+        color: variables.$primary-bg-color;
+        padding: variables.$spacing-sm * 1.5 variables.$spacing-sm * 2.5;
+        border-radius: variables.$border-radius-base;
+        border: unset;
+        font-size: variables.$font-base-size + 1;
+        width: fit-content;
+    }
+
+    .error-message {
+        color: variables.$primary-error-color;
+        font-size: variables.$font-base-sm;
+        margin-top: variables.$spacing-sm;
+        min-height: variables.$spacing-sm + 2;
+    }
+
+    input.invalid {
+        border-color: variables.$primary-error-color !important;
+        box-shadow: 0 0 0 2px rgba($color: variables.$primary-error-color, $alpha: 0.25) !important;
+    }
+
+    .form-checkbox label.invalid-label {
+        color: variables.$primary-error-color;
+
+    }
+}
