@@ -29,6 +29,7 @@
     input[type='text'],
     input[type='email'],
     input[type='password'],
+    input[type='search'],
     input[type='tel'] {
         width: 100%;
         height: variables.$font-base-size * 3;

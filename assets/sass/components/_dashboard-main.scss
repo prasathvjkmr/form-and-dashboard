@@ -1,0 +1,44 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as icon;
+
+$dashboard-icons-positions: (
+    'views' : 2px,
+    'profit' : -102px,
+    'products' : -202px,
+    'users' : -312px,
+    'search' : -422px,
+);
+
+main {
+    padding: variables.$spacing-lg;
+
+    .total-count-container {
+        display: flex;
+        justify-content: space-between;
+
+        div[class^='total-'] img {
+            @include icon.icon-size(68px);
+        }
+
+        @each $name, $position in $dashboard-icons-positions {
+            div[class='total-#{$name}'] img {
+                object-position: -124px $position;
+            }
+        }
+
+        div[class^='total-'] {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: variables.$spacing-lg *3;
+            padding: variables.$spacing-md;
+            border: 1px solid variables.$primary-border-color;
+            border-radius: variables.$border-radius-base + 6px;
+            box-shadow: variables.$primary-box-shadow;
+
+            h2 {
+                color: variables.$black-color;
+            }
+        }
+    }
+}

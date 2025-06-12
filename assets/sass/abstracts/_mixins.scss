@@ -7,7 +7,5 @@
 @mixin icon-size($width: width) {
     width: $width;
     height: $width;
-    background: url('../../../assets/images/icons.svg');
-    background-repeat: no-repeat;
-    padding-left: calc($width + 4px);
+    object-fit: none;
 }

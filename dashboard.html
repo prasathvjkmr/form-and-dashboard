@@ -2,43 +2,53 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="assets/sass/style.css">
+    <link rel="stylesheet" href="assets/sass/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <aside class="sidebar-container">
-        <ul>
-            <li>
-                <a href="dashboard.html">
-                    <img src="assets/images/logo.svg" alt="IDRIVE">
-                </a>
-            </li>
-            <li>
-                <a href="dashboard.html">Dashboard</a>
-            </li>
-            <li>
-                <a href="invoice.html">Invoice</a>
-            </li>
-            <li>
-                <a href="sales.html">Sales</a>
-            </li>
-            <li>
-                <a href="usage.html">Usage</a>
-            </li>
-            <li>
-                <a href="chat.html">Chat</a>
-            </li>
-            <li>
-                <a href="history.html">History</a>
-            </li>
-        </ul>
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <img src="assets/images/logo.svg" alt="IDRIVE" />
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboard.html">
+                        <img src="assets/images/icons.svg" alt="Dashboard" />
+                        <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="invoice.html"><img src="assets/images/icons.svg" alt="Invoice" /><span>Invoice</span></a>
+                </li>
+                <li>
+                    <a href="sales.html"><img src="assets/images/icons.svg" alt="Sales" /><span>Sales</span></a>
+                </li>
+                <li>
+                    <a href="usage.html"><img src="assets/images/icons.svg" alt="Usage" /><span>Usage</span></a>
+                </li>
+                <li>
+                    <a href="chat.html"><img src="assets/images/icons.svg" alt="Chat" /><span>Chat</span></a>
+                </li>
+                <li>
+                    <a href="history.html"><img src="assets/images/icons.svg" alt="History" /><span>History</span></a>
+                </li>
+            </ul>
+        </nav>
     </aside>
-    <h1>
-        Dashboard
-    </h1>
+    <header>
+
+        <h1 class="title">
+        </h1>
+    </header>
+
+    <script src="assets/js/dashboard.js"></script>
 </body>
 
 </html>

@@ -5,13 +5,231 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice | IDRIVE</title>
-    <link rel="stylesheet" href="assets/sass/style.css">    
+    <link rel="stylesheet" href="assets/sass/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>
-        Invoice
-    </h1>
+
+    <aside class="sidebar-container">
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <img src="assets/images/logo.svg" alt="IDRIVE" />
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboard.html">
+                        <img src="assets/images/icons.svg" alt="Dashboard" />
+                        <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="invoice.html"><img src="assets/images/icons.svg" alt="Invoice" /><span>Invoice</span></a>
+                </li>
+                <li>
+                    <a href="sales.html"><img src="assets/images/icons.svg" alt="Sales" /><span>Sales</span></a>
+                </li>
+                <li>
+                    <a href="usage.html"><img src="assets/images/icons.svg" alt="Usage" /><span>Usage</span></a>
+                </li>
+                <li>
+                    <a href="chat.html"><img src="assets/images/icons.svg" alt="Chat" /><span>Chat</span></a>
+                </li>
+                <li>
+                    <a href="history.html"><img src="assets/images/icons.svg" alt="History" /><span>History</span></a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <header>
+        <div>
+            <h1 class="title">
+            </h1>
+        </div>
+        <div class="header-right">
+            <form class="search-form">
+                <input type="search" name="search" id="search" placeholder="Search">
+            </form>
+            <div class="theme-select">
+                <div class="theme-selected">
+                    <img src="assets/images/icons.svg" alt="light">
+                </div>
+                <div class="theme-select-option">
+                    <div class="light">
+                        <img src="assets/images/icons.svg" alt="light"> <span>Light</span>
+                    </div>
+                    <div class="dark">
+                        <img src="assets/images/icons.svg" alt="dark"> <span>Dark</span>
+                    </div>
+                    <div class="auto">
+                        <img src="assets/images/icons.svg" alt="auto"> <span>Auto</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="notification.html" class="header-notification-icon">
+                <img src="assets/images/icons.svg" alt="Notification">
+            </a>
+            <a href="profile.html" class="header-profile-icon">
+                <img src="assets/images/icons.svg" alt="Profile">
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="total-count-container">
+            <div class="total-views">
+                <div>
+                    <h2>
+                        34.554K
+                    </h2>
+                    <span>
+                        Total Views
+                    </span>
+                </div>
+                <div>
+                    <img src="assets/images/icons.svg" alt="Total Views">
+                </div>
+            </div>
+            <div class="total-profit">
+                <div>
+                    <h2>
+                        34.554K
+                    </h2>
+                    <span>
+                        Total Profit
+                    </span>
+                </div>
+                <div>
+                    <img src="assets/images/icons.svg" alt="Total Profit">
+                </div>
+            </div>
+            <div class="total-products">
+                <div>
+                    <h2>
+                        34.554K
+                    </h2>
+                    <span>
+                        Total Products
+                    </span>
+                </div>
+                <div>
+                    <img src="assets/images/icons.svg" alt="Total Products">
+                </div>
+            </div>
+            <div class="total-users">
+                <div>
+                    <h2>
+                        34.554K
+                    </h2>
+                    <span>
+                        Total Users
+                    </span>
+                </div>
+                <div>
+                    <img src="assets/images/icons.svg" alt="Total Users">
+                </div>
+            </div>
+            <div class="total-search">
+                <div>
+                    <h2>
+                        34.554K
+                    </h2>
+                    <span>
+                        Total Search
+                    </span>
+                </div>
+                <div>
+                    <img src="assets/images/icons.svg" alt="Total Serach">
+                </div>
+            </div>
+        </div>
+        <div class="bill-information">
+            <h3>
+                Bill Information
+            </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            Client Name
+                        </td>
+                        <td>
+                            Related To
+                        </td>
+                        <td>
+                            Close Date
+                        </td>
+                        <td>
+                            Contact Name
+                        </td>
+                        <td>
+                            Priority
+                        </td>
+                        <td>
+                            Status
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-client="name">
+                            <img src="assets/images/icons.svg" alt="">
+                            <span class="Client Name">
+                            </span>
+                        </td>
+                        <td data-client="related">
+                        </td>
+                        <td data-client="close-date">
+                        </td>
+                        <td data-client="contact">
+                        </td>
+                        <td data-client="priority">
+                        </td>
+                        <td data-client="status" status-data="open">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="invoice-container">
+            <h3>
+                Invoice
+            </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            Invoice Number
+                        </td>
+                        <td>
+                            Related To
+                        </td>
+                        <td>
+                            Close Date
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-client="name">
+                            <img src="assets/images/icons.svg" alt="">
+                            <span class="Client Name">
+                            </span>
+                        </td>
+                        <td data-client="related">
+                        </td>
+                        <td data-client="close-date">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/invoice.js"></script>
 </body>
 
 </html>

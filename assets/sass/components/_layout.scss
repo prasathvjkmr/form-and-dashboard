@@ -1,0 +1,21 @@
+aside {
+    grid-area: aside;
+}
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+}
+
+body {
+    display: grid;
+    min-width: 100dvw;
+    grid-template-columns: 15dvw 85dvw;
+    grid-template-areas:
+        'aside header'
+        'aside main';
+    align-items: start;
+}

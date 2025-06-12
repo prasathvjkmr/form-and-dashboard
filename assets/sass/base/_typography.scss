@@ -1,8 +1,10 @@
 @use '../themes' as theme;
 @use '../abstracts/' as variables;
 
-$font-stack : ('Roboto', san-serif);
-$primary-font: $font-stack;
+$primary-font-stack : ('Roboto', san-serif);
+$secondary-font-stack : ('Open Sans', san-serif);
+$primary-font: $primary-font-stack;
+$secondary-font: $secondary-font-stack;
 $primary-letter-spacing: 0px;
 
 body {
@@ -15,6 +17,7 @@ a {
     color: variables.$secondary-color;
     text-decoration: none;
     transition: all ease-in-out 0.4s;
+    font: normal normal 600 15px / 20px $secondary-font;
 
     &:hover {
         text-decoration: underline;

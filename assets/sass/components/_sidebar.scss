@@ -1,7 +1,22 @@
 @use '../abstracts/mixins' as icon;
 @use '../abstracts/variables' as variables;
 
+// $icon-y-positions: 0px, -60px, -120px, -180px, -240px, -300px;
+// $icon-active-x-positions: -58px;
+
+$icons-positions: (
+    2 : 0px,
+    3 : -60px,
+    4 : -120px,
+    5 : -180px,
+    6 : -240px,
+    7 : -300px,
+);
+
 .sidebar-container {
+    border-right: 1px solid variables.$primary-border-color;
+    min-height: 100dvh;
+
     ul {
         list-style-type: none;
         display: flex;
@@ -10,42 +25,39 @@
         align-items: start;
         gap: variables.$spacing-sm;
 
-        li a {
-            text-decoration: none;
+        li {
+            width: 100%;
+
+            a {
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: variables.$spacing-sm;
+                padding: variables.$spacing-sm;
+                color: variables.$tertiary-color;
+            }
+
+            &>a.active {
+                color: variables.$secondary-color;
+                background-color: rgba(variables.$secondary-bg-color, 0.08);
+            }
+        }
+
+        @each $child, $position in $icons-positions {
+            & li:nth-child(#{$child}) a.active img {
+                object-position: -58px $position;
+            }
+        }
+
+        @each $child, $position in $icons-positions {
+            li:nth-child(#{$child}) img {
+                @include icon.icon-size(22px);
+                object-position: 2px $position;
+            }
         }
 
         li:first-child img {
             height: 40px;
-        }
-
-        li:nth-child(2) {
-            @include icon.icon-size(22px);
-            background-position: 2px 0px;
-        }
-
-        li:nth-child(3) {
-            @include icon.icon-size(22px);
-            background-position: 2px -60px;
-        }
-
-        li:nth-child(4) {
-            @include icon.icon-size(22px);
-            background-position: 2px -120px;
-        }
-
-        li:nth-child(5) {
-            @include icon.icon-size(22px);
-            background-position: 2px -180px;
-        }
-
-        li:nth-child(6) {
-            @include icon.icon-size(22px);
-            background-position: 2px -240px;
-        }
-
-        li:last-child {
-            @include icon.icon-size(22px);
-            background-position: 2px -300px;
         }
     }
 }

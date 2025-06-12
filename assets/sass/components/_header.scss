@@ -1,0 +1,93 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as icon;
+
+header {
+    padding: variables.$spacing-md;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid variables.$primary-border-color;
+
+    .title {
+        text-transform: capitalize;
+        color: variables.$black-color;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: variables.$spacing-lg;
+
+        a[class$="-icon"] img {
+            @include icon.icon-size(25px)
+        }
+
+        a.header-notification-icon img {
+            object-position: -222px -68px;
+        }
+
+        a.header-profile-icon img {
+            object-position: -160px -30px;
+            border-radius: 50%;
+        }
+    }
+
+    input[type='search'] {
+        min-width: 500px;
+        height: variables.$font-base-size * 3;
+        border: 1px solid variables.$primary-input-border-color;
+        border-radius: variables.$border-radius-base + 2px;
+        padding: variables.$spacing-sm;
+        text-indent: variables.$spacing-lg * 1.25;
+        font-size: variables.$font-base-size;
+        background: url('../../../assets/images/icons.svg') -60px -368px no-repeat content-box;
+
+        &:focus {
+            outline: none;
+            border-color: variables.$primary-color;
+            box-shadow: 0 0 0 2px rgba($color: variables.$primary-color, $alpha: 0.25);
+        }
+    }
+
+    .theme-select {
+        position: relative;
+
+        .theme-select-option {
+            margin-top: variables.$spacing-sm;
+            display: none;
+            background-color: rgba($color: variables.$secondary-color, $alpha: 0.25);
+            border-radius: variables.$border-radius-base;
+
+            &.show {
+                display: block;
+                display: flex;
+                flex-direction: column;
+                gap: variables.$spacing-sm;
+            }
+
+            position: absolute;
+            left: 0px;
+
+            .light,
+            .dark,
+            .auto {
+                padding: variables.$spacing-sm;
+                display: flex;
+                align-items: center;
+                gap: variables.$spacing-sm;
+                transition: all ease-in-out 0.4s;
+
+                &:hover {
+                    background-color: rgba($color: variables.$secondary-color, $alpha: 0.25);
+                    color: variables.$primary-bg-color;
+                }
+            }
+        }
+
+        img {
+            @include icon.icon-size(25px);
+            object-position: -222px -4px;
+            cursor: pointer;
+        }
+    }
+}
