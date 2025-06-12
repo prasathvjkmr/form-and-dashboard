@@ -17,7 +17,7 @@
 
     label {
         display: block;
-        margin-bottom: variables.$spacing-sm / 2;
+        margin-bottom: calc(variables.$spacing-sm / 2);
         font-size: variables.$font-base-size;
 
         & .required {

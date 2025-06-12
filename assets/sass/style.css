@@ -133,4 +133,67 @@ a:hover {
   color: #F15C5C;
 }
 
+.sidebar-container ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 8px;
+}
+.sidebar-container ul li a {
+  text-decoration: none;
+}
+.sidebar-container ul li:first-child img {
+  height: 40px;
+}
+.sidebar-container ul li:nth-child(2) {
+  width: 22px;
+  height: 22px;
+  background: url("../../../assets/images/icons.svg");
+  background-repeat: no-repeat;
+  padding-left: 26px;
+  background-position: 2px 0px;
+}
+.sidebar-container ul li:nth-child(3) {
+  width: 22px;
+  height: 22px;
+  background: url("../../../assets/images/icons.svg");
+  background-repeat: no-repeat;
+  padding-left: 26px;
+  background-position: 2px -60px;
+}
+.sidebar-container ul li:nth-child(4) {
+  width: 22px;
+  height: 22px;
+  background: url("../../../assets/images/icons.svg");
+  background-repeat: no-repeat;
+  padding-left: 26px;
+  background-position: 2px -120px;
+}
+.sidebar-container ul li:nth-child(5) {
+  width: 22px;
+  height: 22px;
+  background: url("../../../assets/images/icons.svg");
+  background-repeat: no-repeat;
+  padding-left: 26px;
+  background-position: 2px -180px;
+}
+.sidebar-container ul li:nth-child(6) {
+  width: 22px;
+  height: 22px;
+  background: url("../../../assets/images/icons.svg");
+  background-repeat: no-repeat;
+  padding-left: 26px;
+  background-position: 2px -240px;
+}
+.sidebar-container ul li:last-child {
+  width: 22px;
+  height: 22px;
+  background: url("../../../assets/images/icons.svg");
+  background-repeat: no-repeat;
+  padding-left: 26px;
+  background-position: 2px -300px;
+}
+
 /*# sourceMappingURL=style.css.map */

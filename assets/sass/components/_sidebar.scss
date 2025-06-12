@@ -1,0 +1,51 @@
+@use '../abstracts/mixins' as icon;
+@use '../abstracts/variables' as variables;
+
+.sidebar-container {
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: variables.$spacing-sm;
+
+        li a {
+            text-decoration: none;
+        }
+
+        li:first-child img {
+            height: 40px;
+        }
+
+        li:nth-child(2) {
+            @include icon.icon-size(22px);
+            background-position: 2px 0px;
+        }
+
+        li:nth-child(3) {
+            @include icon.icon-size(22px);
+            background-position: 2px -60px;
+        }
+
+        li:nth-child(4) {
+            @include icon.icon-size(22px);
+            background-position: 2px -120px;
+        }
+
+        li:nth-child(5) {
+            @include icon.icon-size(22px);
+            background-position: 2px -180px;
+        }
+
+        li:nth-child(6) {
+            @include icon.icon-size(22px);
+            background-position: 2px -240px;
+        }
+
+        li:last-child {
+            @include icon.icon-size(22px);
+            background-position: 2px -300px;
+        }
+    }
+}

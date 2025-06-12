@@ -3,3 +3,11 @@
     justify-content: $justify-content-center;
     align-items: $align-items-center;
 }
+
+@mixin icon-size($width: width) {
+    width: $width;
+    height: $width;
+    background: url('../../../assets/images/icons.svg');
+    background-repeat: no-repeat;
+    padding-left: calc($width + 4px);
+}

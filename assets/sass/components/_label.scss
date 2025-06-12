@@ -1,9 +1,0 @@
-@use '../abstracts/color' as color;
-@use '../base/font' as font;
-
-// @mixin($color)
-
-label {
-    color: color.$primary-color;
-    font-family: font.$primary-font;
-}
