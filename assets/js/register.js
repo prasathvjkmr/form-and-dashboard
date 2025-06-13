@@ -92,7 +92,6 @@ registerForm.addEventListener("submit", (e) => {
 
   if (formIsValid) {
     alert("Form submitted successfully!");
-    console.log({});
     const formData = {};
     for (const fieldDef of fields) {
       const field = document.getElementById(fieldDef.id);

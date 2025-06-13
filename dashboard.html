@@ -10,7 +10,7 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body view="dashboard">
     <aside class="sidebar-container">
         <nav class="navbar">
             <ul>
@@ -23,9 +23,9 @@
                     <a href="dashboard.html">
                         <img src="assets/images/icons.svg" alt="Dashboard" />
                         <span>Dashboard</span></a>
-                </li>
-                <li>
-                    <a href="invoice.html"><img src="assets/images/icons.svg" alt="Invoice" /><span>Invoice</span></a>
+                    </li>
+                    <li>
+                        <a href="invoice.html"><img src="assets/images/icons.svg" alt="Invoice" /><span>Invoice</span></a>
                 </li>
                 <li>
                     <a href="sales.html"><img src="assets/images/icons.svg" alt="Sales" /><span>Sales</span></a>
@@ -41,6 +41,15 @@
                 </li>
             </ul>
         </nav>
+        <a href="dashboard.html" class="mob-logo">
+            <img src="assets/images/logo.svg" alt="IDRIVE" />
+        </a>
+        <button class="hamburger" style="display:none;">
+            <input type="checkbox" id="menuCheckbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </aside>
     <header>
         <div>
@@ -76,7 +85,10 @@
             </a>
         </div>
     </header>
+    <main class="dashboard"></main>
     <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/invoice.js"></script>
+    <script src="assets/js/breadcrumb.js"></script>
 </body>
 
 </html>

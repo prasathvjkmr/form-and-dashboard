@@ -1,7 +1,7 @@
 @use '../abstracts/variables' as variables;
 @use '../abstracts/mixins' as icon;
 
-header {
+body[view='dashboard'] header {
     padding: variables.$spacing-md;
     display: flex;
     justify-content: space-between;
@@ -20,6 +20,10 @@ header {
         justify-content: flex-end;
         gap: variables.$spacing-lg;
 
+        @media (max-width:768px) {
+            gap: variables.$spacing-sm;
+        }
+
         a[class$="-icon"] img {
             @include icon.icon-size(25px)
         }
@@ -35,10 +39,17 @@ header {
     }
 
     input[type='search'] {
-        min-width: 500px;
+        @media (min-width:992px) {
+            min-width: 500px;
+        }
+
+        @media (max-width:767.98px) {
+            max-width: 120px;
+        }
+
         height: variables.$font-base-size * 3;
         border: 1px solid variables.$primary-input-border-color;
-        border-radius: variables.$border-radius-base + 2px;
+        border-radius: variables.$border-radius-base +2px;
         padding: variables.$spacing-sm;
         text-indent: variables.$spacing-lg * 1.25;
         font-size: variables.$font-base-size;
@@ -59,6 +70,8 @@ header {
             display: none;
             background-color: rgba($color: variables.$secondary-color, $alpha: 0.25);
             border-radius: variables.$border-radius-base;
+            position: absolute;
+            left: 0px;
 
             &.show {
                 display: block;
@@ -67,8 +80,6 @@ header {
                 gap: variables.$spacing-sm;
             }
 
-            position: absolute;
-            left: 0px;
 
             .light,
             .dark,

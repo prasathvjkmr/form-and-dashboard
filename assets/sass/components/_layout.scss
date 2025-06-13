@@ -1,45 +1,51 @@
-body {
+body[view='dashboard'] {
     display: grid;
     min-width: 100vw;
     min-height: 100vh;
     grid-template-columns: 15% 1fr;
     grid-template-rows: 60px 1fr;
     grid-template-areas:
-    "aside head"
-    "aside main";
+        "aside head"
+        "aside main";
     overflow: hidden;
-    
+
     @media (max-width:992px) {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
         grid-template-areas:
-        "aside"
-        "head"
-        "main";
-        min-height: fit-content;
+            "aside"
+            "head"
+            "main";
+        // min-height: fit-content;
     }
-}
 
-aside {
-    grid-area: aside;
-    position: sticky;
-    top: 0;
-    min-height: 100vh;
-    overflow-y: auto;
-    @media (max-width:992px) {
-        min-height: fit-content;
+    aside {
+        grid-area: aside;
+        position: sticky;
+        top: 0;
+        min-height: 100vh;
+        overflow-y: auto;
+
+        @media (max-width:992px) {
+            min-height: fit-content;
+            position: unset;
+        }
     }
-}
 
-header {
-    grid-area: head;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
+    header {
+        grid-area: head;
+        position: sticky;
+        top: 0;
+        z-index: 1;
 
-main {
-    grid-area: main;
-    overflow-y: auto;
-    height: calc(100vh - 100px);
+        @media (max-width:992px) {
+            position: unset;
+        }
+    }
+
+    main.dashboard {
+        grid-area: main;
+        overflow-y: auto;
+        height: calc(100vh - 100px);
+    }
 }

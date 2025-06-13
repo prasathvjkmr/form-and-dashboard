@@ -163,9 +163,90 @@ a:hover {
   min-height: 100dvh;
   border-right: 1px solid #E3ECF5;
 }
+.sidebar-container .mob-logo {
+  display: none;
+}
 @media (max-width: 992px) {
   .sidebar-container {
-    min-height: fit-content;
+    min-height: min-content;
+    display: flex;
+    align-items: flex-start;
+  }
+  .sidebar-container .navbar {
+    position: absolute;
+    left: 50px;
+    max-width: 300px;
+    width: 100vw;
+    min-height: calc(100dvh + 100px);
+    margin: -100px 0 0 -50px;
+    padding: 24px;
+    padding-top: 125px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    background: #ededed;
+    list-style-type: none;
+    z-index: 100;
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  }
+  .sidebar-container .mob-logo {
+    display: block;
+  }
+  .sidebar-container .hamburger {
+    background-color: unset;
+    border: unset;
+    display: block !important;
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .sidebar-container .hamburger input[type=checkbox] {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+  }
+  .sidebar-container .hamburger input[type=checkbox]:focus {
+    background-color: unset;
+  }
+  .sidebar-container .hamburger input[type=checkbox]:checked ~ span {
+    opacity: 1;
+    transform: rotate(45deg) translate(0px, -1px);
+    background: #090606;
+  }
+  .sidebar-container .hamburger input[type=checkbox]:checked ~ span:nth-last-child(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  .sidebar-container .hamburger input[type=checkbox]:checked ~ span:nth-last-child(1) {
+    transform: rotate(-45deg) translate(1px, -1px);
+  }
+  .sidebar-container .hamburger span {
+    display: block;
+    width: 24px;
+    height: 4px;
+    margin-bottom: 4px;
+    position: relative;
+    background-color: #5F5F5F;
+    border-radius: 4px;
+    transform-origin: 4px 0px;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background-color 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+  }
+  .sidebar-container .hamburger span:first-child {
+    transform-origin: 0% 0%;
+  }
+  .sidebar-container .hamburger span:nth-child(2) {
+    transform-origin: 0% 100%;
   }
 }
 .sidebar-container ul {
@@ -249,7 +330,7 @@ a:hover {
   height: 40px;
 }
 
-header {
+body[view=dashboard] header {
   padding: 16px;
   display: flex;
   justify-content: space-between;
@@ -257,30 +338,34 @@ header {
   background-color: #FFFFFF;
   box-shadow: 0px 4px 12px rgba(159, 172, 198, 0.1607843137);
 }
-header .title {
+body[view=dashboard] header .title {
   text-transform: capitalize;
   color: #090606;
 }
-header .header-right {
+body[view=dashboard] header .header-right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 24px;
 }
-header .header-right a[class$=-icon] img {
+@media (max-width: 768px) {
+  body[view=dashboard] header .header-right {
+    gap: 8px;
+  }
+}
+body[view=dashboard] header .header-right a[class$=-icon] img {
   width: 25px;
   height: 25px;
   object-fit: none;
 }
-header .header-right a.header-notification-icon img {
+body[view=dashboard] header .header-right a.header-notification-icon img {
   object-position: -222px -68px;
 }
-header .header-right a.header-profile-icon img {
+body[view=dashboard] header .header-right a.header-profile-icon img {
   object-position: -160px -30px;
   border-radius: 50%;
 }
-header input[type=search] {
-  min-width: 500px;
+body[view=dashboard] header input[type=search] {
   height: 48px;
   border: 1px solid #D7DBDF;
   border-radius: 6px;
@@ -289,15 +374,25 @@ header input[type=search] {
   font-size: 16px;
   background: url("../../../assets/images/icons.svg") -60px -368px no-repeat content-box;
 }
-header input[type=search]:focus {
+@media (min-width: 992px) {
+  body[view=dashboard] header input[type=search] {
+    min-width: 500px;
+  }
+}
+@media (max-width: 767.98px) {
+  body[view=dashboard] header input[type=search] {
+    max-width: 120px;
+  }
+}
+body[view=dashboard] header input[type=search]:focus {
   outline: none;
   border-color: #5F5F5F;
   box-shadow: 0 0 0 2px rgba(95, 95, 95, 0.25);
 }
-header .theme-select {
+body[view=dashboard] header .theme-select {
   position: relative;
 }
-header .theme-select .theme-select-option {
+body[view=dashboard] header .theme-select .theme-select-option {
   margin-top: 8px;
   display: none;
   background-color: rgba(0, 113, 188, 0.25);
@@ -305,28 +400,28 @@ header .theme-select .theme-select-option {
   position: absolute;
   left: 0px;
 }
-header .theme-select .theme-select-option.show {
+body[view=dashboard] header .theme-select .theme-select-option.show {
   display: block;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-header .theme-select .theme-select-option .light,
-header .theme-select .theme-select-option .dark,
-header .theme-select .theme-select-option .auto {
+body[view=dashboard] header .theme-select .theme-select-option .light,
+body[view=dashboard] header .theme-select .theme-select-option .dark,
+body[view=dashboard] header .theme-select .theme-select-option .auto {
   padding: 8px;
   display: flex;
   align-items: center;
   gap: 8px;
   transition: all ease-in-out 0.4s;
 }
-header .theme-select .theme-select-option .light:hover,
-header .theme-select .theme-select-option .dark:hover,
-header .theme-select .theme-select-option .auto:hover {
+body[view=dashboard] header .theme-select .theme-select-option .light:hover,
+body[view=dashboard] header .theme-select .theme-select-option .dark:hover,
+body[view=dashboard] header .theme-select .theme-select-option .auto:hover {
   background-color: rgba(0, 113, 188, 0.25);
   color: #FFFFFF;
 }
-header .theme-select img {
+body[view=dashboard] header .theme-select img {
   width: 25px;
   height: 25px;
   object-fit: none;
@@ -334,7 +429,7 @@ header .theme-select img {
   cursor: pointer;
 }
 
-body {
+body[view=dashboard] {
   display: grid;
   min-width: 100vw;
   min-height: 100vh;
@@ -344,15 +439,13 @@ body {
   overflow: hidden;
 }
 @media (max-width: 992px) {
-  body {
+  body[view=dashboard] {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "aside" "head" "main";
-    min-height: fit-content;
   }
 }
-
-aside {
+body[view=dashboard] aside {
   grid-area: aside;
   position: sticky;
   top: 0;
@@ -360,87 +453,102 @@ aside {
   overflow-y: auto;
 }
 @media (max-width: 992px) {
-  aside {
+  body[view=dashboard] aside {
     min-height: fit-content;
+    position: unset;
   }
 }
-
-header {
+body[view=dashboard] header {
   grid-area: head;
   position: sticky;
   top: 0;
   z-index: 1;
 }
-
-main {
+@media (max-width: 992px) {
+  body[view=dashboard] header {
+    position: unset;
+  }
+}
+body[view=dashboard] main.dashboard {
   grid-area: main;
   overflow-y: auto;
   height: calc(100vh - 100px);
 }
 
-main .bill-information-container table tbody tr td input[type=checkbox],
-main .invoice-container table tbody tr td input[type=checkbox],
-main .recent-activity-container table tbody tr td input[type=checkbox], main .bill-information-container table thead tr td input[type=checkbox],
-main .invoice-container table thead tr td input[type=checkbox],
-main .recent-activity-container table thead tr td input[type=checkbox] {
+main.dashboard .bill-information-container table tbody tr td input[type=checkbox],
+main.dashboard .invoice-container table tbody tr td input[type=checkbox],
+main.dashboard .recent-activity-container table tbody tr td input[type=checkbox], main.dashboard .bill-information-container table thead tr td input[type=checkbox],
+main.dashboard .invoice-container table thead tr td input[type=checkbox],
+main.dashboard .recent-activity-container table thead tr td input[type=checkbox] {
   width: 16px;
   height: 16px;
 }
 
-main .bill-information-container h3:has(+ table),
-main .invoice-container h3:has(+ table),
-main .recent-activity-container h3:has(+ table) {
+main.dashboard .bill-information-container h3:has(+ table),
+main.dashboard .invoice-container h3:has(+ table),
+main.dashboard .recent-activity-container h3:has(+ table) {
   padding: 24px;
   color: #090606;
 }
-main .bill-information-container table,
-main .invoice-container table,
-main .recent-activity-container table {
+@media (max-width: 992px) {
+  main.dashboard .bill-information-container h3:has(+ table),
+  main.dashboard .invoice-container h3:has(+ table),
+  main.dashboard .recent-activity-container h3:has(+ table) {
+    position: sticky;
+    left: 0;
+    top: 0;
+  }
+}
+main.dashboard .bill-information-container table,
+main.dashboard .invoice-container table,
+main.dashboard .recent-activity-container table {
   border-spacing: 0;
   width: 100%;
 }
-main .bill-information-container table thead,
-main .invoice-container table thead,
-main .recent-activity-container table thead {
+main.dashboard .bill-information-container table thead,
+main.dashboard .invoice-container table thead,
+main.dashboard .recent-activity-container table thead {
   background-color: #F3F6F9;
   background-clip: padding-box;
 }
-main .bill-information-container table thead tr td,
-main .invoice-container table thead tr td,
-main .recent-activity-container table thead tr td {
+main.dashboard .bill-information-container table thead tr td,
+main.dashboard .invoice-container table thead tr td,
+main.dashboard .recent-activity-container table thead tr td {
   padding-inline: 24px;
   padding-block: 12px;
   color: #3F4D5E;
   font-weight: 600;
 }
-main .bill-information-container table thead tr td input[type=checkbox],
-main .invoice-container table thead tr td input[type=checkbox],
-main .recent-activity-container table thead tr td input[type=checkbox] {
+@media (max-width: 992px) {
+  main.dashboard .bill-information-container table thead tr td,
+  main.dashboard .invoice-container table thead tr td,
+  main.dashboard .recent-activity-container table thead tr td {
+    min-width: 200px;
+  }
+}
+main.dashboard .bill-information-container table thead tr td input[type=checkbox],
+main.dashboard .invoice-container table thead tr td input[type=checkbox],
+main.dashboard .recent-activity-container table thead tr td input[type=checkbox] {
   margin-right: 8px;
 }
-main .bill-information-container table tbody,
-main .invoice-container table tbody,
-main .recent-activity-container table tbody {
-  padding-bottom: 24px;
-}
-main .bill-information-container table tbody tr td,
-main .invoice-container table tbody tr td,
-main .recent-activity-container table tbody tr td {
-  padding-block: 24px;
+main.dashboard .bill-information-container table tbody tr td,
+main.dashboard .invoice-container table tbody tr td,
+main.dashboard .recent-activity-container table tbody tr td {
   padding-inline: 24px;
+  padding-block: 24px;
   color: #3F4D5E;
   border-bottom: 1px solid #E3ECF5;
 }
-main .bill-information-container table tbody tr td .client-name-cell,
-main .invoice-container table tbody tr td .client-name-cell,
-main .recent-activity-container table tbody tr td .client-name-cell {
+main.dashboard .bill-information-container table tbody tr td .client-name-cell,
+main.dashboard .invoice-container table tbody tr td .client-name-cell,
+main.dashboard .recent-activity-container table tbody tr td .client-name-cell {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-main .bill-information-container table tbody tr td .client-name-cell .client-initials,
-main .invoice-container table tbody tr td .client-name-cell .client-initials,
-main .recent-activity-container table tbody tr td .client-name-cell .client-initials {
+main.dashboard .bill-information-container table tbody tr td .client-name-cell .client-initials,
+main.dashboard .invoice-container table tbody tr td .client-name-cell .client-initials,
+main.dashboard .recent-activity-container table tbody tr td .client-name-cell .client-initials {
   background-color: #0071BC;
   color: #FFFFFF;
   width: 24px;
@@ -451,99 +559,100 @@ main .recent-activity-container table tbody tr td .client-name-cell .client-init
   justify-content: center;
   align-items: center;
 }
-main .bill-information-container table tbody tr td:first-child,
-main .invoice-container table tbody tr td:first-child,
-main .recent-activity-container table tbody tr td:first-child {
+main.dashboard .bill-information-container table tbody tr td:first-child,
+main.dashboard .invoice-container table tbody tr td:first-child,
+main.dashboard .recent-activity-container table tbody tr td:first-child {
   color: #090606;
   font-weight: 600;
 }
-main .bill-information-container table tbody tr td[status-data=open],
-main .invoice-container table tbody tr td[status-data=open],
-main .recent-activity-container table tbody tr td[status-data=open] {
+main.dashboard .bill-information-container table tbody tr td[status-data=open],
+main.dashboard .invoice-container table tbody tr td[status-data=open],
+main.dashboard .recent-activity-container table tbody tr td[status-data=open] {
   color: #FF814F;
 }
-main .bill-information-container table tbody tr td[status-data=open] span,
-main .invoice-container table tbody tr td[status-data=open] span,
-main .recent-activity-container table tbody tr td[status-data=open] span {
+main.dashboard .bill-information-container table tbody tr td[status-data=open] span,
+main.dashboard .invoice-container table tbody tr td[status-data=open] span,
+main.dashboard .recent-activity-container table tbody tr td[status-data=open] span {
   padding: 8px;
   background-color: rgba(255, 129, 79, 0.1);
   border-radius: 4px;
   display: block;
 }
-main .bill-information-container table tbody tr td[status-data=completed],
-main .invoice-container table tbody tr td[status-data=completed],
-main .recent-activity-container table tbody tr td[status-data=completed] {
+main.dashboard .bill-information-container table tbody tr td[status-data=completed],
+main.dashboard .invoice-container table tbody tr td[status-data=completed],
+main.dashboard .recent-activity-container table tbody tr td[status-data=completed] {
   color: #9969C5;
 }
-main .bill-information-container table tbody tr td[status-data=completed] span,
-main .invoice-container table tbody tr td[status-data=completed] span,
-main .recent-activity-container table tbody tr td[status-data=completed] span {
+main.dashboard .bill-information-container table tbody tr td[status-data=completed] span,
+main.dashboard .invoice-container table tbody tr td[status-data=completed] span,
+main.dashboard .recent-activity-container table tbody tr td[status-data=completed] span {
   padding: 8px;
   background-color: rgba(153, 105, 197, 0.1);
   border-radius: 4px;
   display: block;
 }
-main .bill-information-container table tbody tr td[status-data=not-started],
-main .invoice-container table tbody tr td[status-data=not-started],
-main .recent-activity-container table tbody tr td[status-data=not-started] {
-  color: #FF814F;
+main.dashboard .bill-information-container table tbody tr td[status-data=not-started],
+main.dashboard .invoice-container table tbody tr td[status-data=not-started],
+main.dashboard .recent-activity-container table tbody tr td[status-data=not-started] {
+  color: #E58E1C;
 }
-main .bill-information-container table tbody tr td[status-data=not-started] span,
-main .invoice-container table tbody tr td[status-data=not-started] span,
-main .recent-activity-container table tbody tr td[status-data=not-started] span {
+main.dashboard .bill-information-container table tbody tr td[status-data=not-started] span,
+main.dashboard .invoice-container table tbody tr td[status-data=not-started] span,
+main.dashboard .recent-activity-container table tbody tr td[status-data=not-started] span {
   padding: 8px;
-  background-color: rgba(255, 129, 79, 0.1);
+  background-color: rgba(229, 142, 28, 0.1);
   border-radius: 4px;
   display: block;
 }
-main .bill-information-container table tbody tr td[status-data=started],
-main .invoice-container table tbody tr td[status-data=started],
-main .recent-activity-container table tbody tr td[status-data=started] {
-  color: #FF814F;
+main.dashboard .bill-information-container table tbody tr td[status-data=started],
+main.dashboard .invoice-container table tbody tr td[status-data=started],
+main.dashboard .recent-activity-container table tbody tr td[status-data=started] {
+  color: #1979B8;
 }
-main .bill-information-container table tbody tr td[status-data=started] span,
-main .invoice-container table tbody tr td[status-data=started] span,
-main .recent-activity-container table tbody tr td[status-data=started] span {
+main.dashboard .bill-information-container table tbody tr td[status-data=started] span,
+main.dashboard .invoice-container table tbody tr td[status-data=started] span,
+main.dashboard .recent-activity-container table tbody tr td[status-data=started] span {
   padding: 8px;
-  background-color: rgba(255, 129, 79, 0.1);
+  background-color: rgba(25, 121, 184, 0.1);
   border-radius: 4px;
   display: block;
 }
 
-main {
-  padding: 24px;
+main.dashboard {
+  padding: 24px 24px 72px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   gap: 24px;
 }
-main .total-count-container {
+main.dashboard .total-count-container {
   width: 100%;
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
 }
-main .total-count-container div[class^=total-] img {
+main.dashboard .total-count-container div[class^=total-] img {
   width: 68px;
   height: 68px;
   object-fit: none;
 }
-main .total-count-container div[class=total-views] img {
+main.dashboard .total-count-container div[class=total-views] img {
   object-position: -124px 2px;
 }
-main .total-count-container div[class=total-profit] img {
+main.dashboard .total-count-container div[class=total-profit] img {
   object-position: -124px -102px;
 }
-main .total-count-container div[class=total-products] img {
+main.dashboard .total-count-container div[class=total-products] img {
   object-position: -124px -202px;
 }
-main .total-count-container div[class=total-users] img {
+main.dashboard .total-count-container div[class=total-users] img {
   object-position: -124px -312px;
 }
-main .total-count-container div[class=total-search] img {
+main.dashboard .total-count-container div[class=total-search] img {
   object-position: -124px -422px;
 }
-main .total-count-container div[class^=total-] {
+main.dashboard .total-count-container div[class^=total-] {
+  flex: 1 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -553,29 +662,43 @@ main .total-count-container div[class^=total-] {
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(159, 172, 198, 0.1607843137);
 }
-main .total-count-container div[class^=total-] .card-body {
+main.dashboard .total-count-container div[class^=total-] .card-body {
   display: flex;
   flex-direction: column;
   gap: 8px;
   font-weight: 500;
 }
-main .total-count-container div[class^=total-] h2 {
+main.dashboard .total-count-container div[class^=total-] h2 {
   color: #090606;
 }
-main .total-count-container div[class^=total-] span {
+main.dashboard .total-count-container div[class^=total-] span {
   color: #3F4D5E;
 }
-main .bill-information-container,
-main .invoice-container,
-main .recent-activity-container {
+main.dashboard .bill-information-container,
+main.dashboard .invoice-container,
+main.dashboard .recent-activity-container {
   width: 100%;
   border-radius: 10px;
   border: 1px solid #E3ECF5;
   box-shadow: 0px 4px 12px rgba(159, 172, 198, 0.1607843137);
+  position: relative;
 }
-main .invoice-container,
-main .recent-activity-container {
+@media (max-width: 993px) {
+  main.dashboard .bill-information-container,
+  main.dashboard .invoice-container,
+  main.dashboard .recent-activity-container {
+    overflow: scroll;
+  }
+}
+main.dashboard .invoice-container,
+main.dashboard .recent-activity-container {
   flex: 1;
+}
+@media (max-width: 992px) {
+  main.dashboard .invoice-container,
+  main.dashboard .recent-activity-container {
+    flex: 1 100%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

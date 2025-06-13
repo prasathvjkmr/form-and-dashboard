@@ -17,6 +17,12 @@ $status-props: (
     h3:has(+table) {
         padding: variables.$spacing-lg;
         color: variables.$black-color;
+
+        @media (max-width:992px) {
+            position: sticky;
+            left: 0;
+            top: 0;
+        }
     }
 
     table {
@@ -27,30 +33,34 @@ $status-props: (
             background-color: variables.$tertiary-bg-color;
             background-clip: padding-box;
 
-            tr td {
 
-                input[type='checkbox'] {
+            tr td {
+                padding-inline: variables.$spacing-lg;
+                padding-block: calc(variables.$spacing-sm * 1.5);
+                color: variables.$table-head;
+                font-weight: 600;
+
+                @media (max-width:992px) {
+                    min-width: 200px;
+                }
+
+                & input[type='checkbox'] {
                     @extend %checkbox-style;
                     margin-right: variables.$spacing-sm;
                 }
-
-                padding-inline: variables.$spacing-lg;
-                padding-block: variables.$spacing-sm * 1.5;
-                color: variables.$table-head;
-                font-weight: 600;
             }
         }
 
         tbody {
-            padding-bottom: variables.$spacing-lg;
 
             tr td {
-                padding-block: variables.$spacing-lg;
                 padding-inline: variables.$spacing-lg;
+                padding-block: variables.$spacing-lg;
                 color: variables.$table-head;
                 border-bottom: 1px solid variables.$primary-border-color;
 
-                input[type='checkbox'] {
+
+                & input[type='checkbox'] {
                     @extend %checkbox-style;
                 }
 
@@ -98,8 +108,8 @@ $dashboard-icons-positions: (
     'search' : -422px,
 );
 
-main {
-    padding: variables.$spacing-lg;
+main.dashboard {
+    padding: variables.$spacing-lg variables.$spacing-lg variables.$spacing-lg * 3;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -122,6 +132,7 @@ main {
         }
 
         div[class^='total-'] {
+            flex: 1 1;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -156,10 +167,19 @@ main {
         border: 1px solid variables.$primary-border-color;
         box-shadow: variables.$primary-box-shadow;
         @extend %table-style;
+        position: relative;
+
+        @media (max-width: 993px) {
+            overflow: scroll;
+        }
     }
 
     .invoice-container,
     .recent-activity-container {
         flex: 1;
+
+        @media (max-width:992px) {
+            flex: 1 100%;
+        }
     }
 }
