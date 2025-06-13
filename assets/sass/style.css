@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -22,6 +23,27 @@ body {
 @media (max-width: 768px) {
   .register-container {
     padding: 48px 36px;
+  }
+}
+
+body[theme=light] {
+  color: #5F5F5F;
+  background-color: #FFFFFF;
+}
+
+body[theme=dark] {
+  color: #FFFFFF;
+  background-color: #090606;
+}
+
+body[theme=auto] {
+  color: #5F5F5F;
+  background-color: #FFFFFF;
+}
+@media (prefers-color-scheme: dark) {
+  body[theme=auto] {
+    color: #FFFFFF;
+    background-color: #090606;
   }
 }
 
@@ -137,8 +159,14 @@ a:hover {
 }
 
 .sidebar-container {
-  border-right: 1px solid #E3ECF5;
+  padding: 8px;
   min-height: 100dvh;
+  border-right: 1px solid #E3ECF5;
+}
+@media (max-width: 992px) {
+  .sidebar-container {
+    min-height: fit-content;
+  }
 }
 .sidebar-container ul {
   list-style-type: none;
@@ -226,6 +254,8 @@ header {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #E3ECF5;
+  background-color: #FFFFFF;
+  box-shadow: 0px 4px 12px rgba(159, 172, 198, 0.1607843137);
 }
 header .title {
   text-transform: capitalize;
@@ -304,32 +334,194 @@ header .theme-select img {
   cursor: pointer;
 }
 
+body {
+  display: grid;
+  min-width: 100vw;
+  min-height: 100vh;
+  grid-template-columns: 15% 1fr;
+  grid-template-rows: 60px 1fr;
+  grid-template-areas: "aside head" "aside main";
+  overflow: hidden;
+}
+@media (max-width: 992px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "aside" "head" "main";
+    min-height: fit-content;
+  }
+}
+
 aside {
   grid-area: aside;
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+@media (max-width: 992px) {
+  aside {
+    min-height: fit-content;
+  }
 }
 
 header {
-  grid-area: header;
+  grid-area: head;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 main {
   grid-area: main;
+  overflow-y: auto;
+  height: calc(100vh - 100px);
 }
 
-body {
-  display: grid;
-  min-width: 100dvw;
-  grid-template-columns: 15dvw 85dvw;
-  grid-template-areas: "aside header" "aside main";
-  align-items: start;
+main .bill-information-container table tbody tr td input[type=checkbox],
+main .invoice-container table tbody tr td input[type=checkbox],
+main .recent-activity-container table tbody tr td input[type=checkbox], main .bill-information-container table thead tr td input[type=checkbox],
+main .invoice-container table thead tr td input[type=checkbox],
+main .recent-activity-container table thead tr td input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+}
+
+main .bill-information-container h3:has(+ table),
+main .invoice-container h3:has(+ table),
+main .recent-activity-container h3:has(+ table) {
+  padding: 24px;
+  color: #090606;
+}
+main .bill-information-container table,
+main .invoice-container table,
+main .recent-activity-container table {
+  border-spacing: 0;
+  width: 100%;
+}
+main .bill-information-container table thead,
+main .invoice-container table thead,
+main .recent-activity-container table thead {
+  background-color: #F3F6F9;
+  background-clip: padding-box;
+}
+main .bill-information-container table thead tr td,
+main .invoice-container table thead tr td,
+main .recent-activity-container table thead tr td {
+  padding-inline: 24px;
+  padding-block: 12px;
+  color: #3F4D5E;
+  font-weight: 600;
+}
+main .bill-information-container table thead tr td input[type=checkbox],
+main .invoice-container table thead tr td input[type=checkbox],
+main .recent-activity-container table thead tr td input[type=checkbox] {
+  margin-right: 8px;
+}
+main .bill-information-container table tbody,
+main .invoice-container table tbody,
+main .recent-activity-container table tbody {
+  padding-bottom: 24px;
+}
+main .bill-information-container table tbody tr td,
+main .invoice-container table tbody tr td,
+main .recent-activity-container table tbody tr td {
+  padding-block: 24px;
+  padding-inline: 24px;
+  color: #3F4D5E;
+  border-bottom: 1px solid #E3ECF5;
+}
+main .bill-information-container table tbody tr td .client-name-cell,
+main .invoice-container table tbody tr td .client-name-cell,
+main .recent-activity-container table tbody tr td .client-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+main .bill-information-container table tbody tr td .client-name-cell .client-initials,
+main .invoice-container table tbody tr td .client-name-cell .client-initials,
+main .recent-activity-container table tbody tr td .client-name-cell .client-initials {
+  background-color: #0071BC;
+  color: #FFFFFF;
+  width: 24px;
+  height: 24px;
+  object-fit: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .bill-information-container table tbody tr td:first-child,
+main .invoice-container table tbody tr td:first-child,
+main .recent-activity-container table tbody tr td:first-child {
+  color: #090606;
+  font-weight: 600;
+}
+main .bill-information-container table tbody tr td[status-data=open],
+main .invoice-container table tbody tr td[status-data=open],
+main .recent-activity-container table tbody tr td[status-data=open] {
+  color: #FF814F;
+}
+main .bill-information-container table tbody tr td[status-data=open] span,
+main .invoice-container table tbody tr td[status-data=open] span,
+main .recent-activity-container table tbody tr td[status-data=open] span {
+  padding: 8px;
+  background-color: rgba(255, 129, 79, 0.1);
+  border-radius: 4px;
+  display: block;
+}
+main .bill-information-container table tbody tr td[status-data=completed],
+main .invoice-container table tbody tr td[status-data=completed],
+main .recent-activity-container table tbody tr td[status-data=completed] {
+  color: #9969C5;
+}
+main .bill-information-container table tbody tr td[status-data=completed] span,
+main .invoice-container table tbody tr td[status-data=completed] span,
+main .recent-activity-container table tbody tr td[status-data=completed] span {
+  padding: 8px;
+  background-color: rgba(153, 105, 197, 0.1);
+  border-radius: 4px;
+  display: block;
+}
+main .bill-information-container table tbody tr td[status-data=not-started],
+main .invoice-container table tbody tr td[status-data=not-started],
+main .recent-activity-container table tbody tr td[status-data=not-started] {
+  color: #FF814F;
+}
+main .bill-information-container table tbody tr td[status-data=not-started] span,
+main .invoice-container table tbody tr td[status-data=not-started] span,
+main .recent-activity-container table tbody tr td[status-data=not-started] span {
+  padding: 8px;
+  background-color: rgba(255, 129, 79, 0.1);
+  border-radius: 4px;
+  display: block;
+}
+main .bill-information-container table tbody tr td[status-data=started],
+main .invoice-container table tbody tr td[status-data=started],
+main .recent-activity-container table tbody tr td[status-data=started] {
+  color: #FF814F;
+}
+main .bill-information-container table tbody tr td[status-data=started] span,
+main .invoice-container table tbody tr td[status-data=started] span,
+main .recent-activity-container table tbody tr td[status-data=started] span {
+  padding: 8px;
+  background-color: rgba(255, 129, 79, 0.1);
+  border-radius: 4px;
+  display: block;
 }
 
 main {
   padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 24px;
 }
 main .total-count-container {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 main .total-count-container div[class^=total-] img {
   width: 68px;
@@ -361,8 +553,29 @@ main .total-count-container div[class^=total-] {
   border-radius: 10px;
   box-shadow: 0px 4px 12px rgba(159, 172, 198, 0.1607843137);
 }
+main .total-count-container div[class^=total-] .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 500;
+}
 main .total-count-container div[class^=total-] h2 {
   color: #090606;
+}
+main .total-count-container div[class^=total-] span {
+  color: #3F4D5E;
+}
+main .bill-information-container,
+main .invoice-container,
+main .recent-activity-container {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #E3ECF5;
+  box-shadow: 0px 4px 12px rgba(159, 172, 198, 0.1607843137);
+}
+main .invoice-container,
+main .recent-activity-container {
+  flex: 1;
 }
 
 /*# sourceMappingURL=style.css.map */

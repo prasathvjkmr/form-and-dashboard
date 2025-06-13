@@ -14,8 +14,14 @@ $icons-positions: (
 );
 
 .sidebar-container {
-    border-right: 1px solid variables.$primary-border-color;
+    padding: variables.$spacing-sm;
     min-height: 100dvh;
+
+    @media (max-width:992px) {
+        min-height: fit-content;
+    }
+
+    border-right: 1px solid variables.$primary-border-color;
 
     ul {
         list-style-type: none;

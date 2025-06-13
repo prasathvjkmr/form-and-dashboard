@@ -4,3 +4,20 @@
     color: $color;
     background-color: $bg-color;
 }
+
+
+body[theme=light] {
+    @include theme(color.$primary-color, color.$primary-bg-color);
+}
+
+body[theme=dark] {
+    @include theme(color.$dark-color, color.$dark-bg-color);
+}
+
+body[theme=auto] {
+    @include theme(color.$primary-color, color.$primary-bg-color);
+
+    @media (prefers-color-scheme: dark) {
+        @include theme(color.$dark-color, color.$dark-bg-color);
+    }
+}

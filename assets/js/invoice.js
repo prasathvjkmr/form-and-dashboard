@@ -86,17 +86,19 @@ $(document).ready(function () {
     },
   ];
 
-  const tbody = $(".bill-information table tbody");
+  const tbody = $(".bill-information-container table tbody");
   tbody.empty();
 
   billData.forEach(function (item) {
+    const checkboxHtml = item.isChecked
+      ? '<input type="checkbox" checked>'
+      : '<input type="checkbox">';
     const newRow = `
       <tr>
         <td data-client="name">
           <div class="client-name-cell">
-             <div class="client-initials" style="background-color: ${
-               item.icon
-             };">${item.icon}</div>
+          ${checkboxHtml} 
+             <div class="client-initials">${item.icon}</div>
              <span class="Client Name">${item.clientName}</span>
           </div>
         </td>
@@ -123,30 +125,26 @@ $(document).ready(function () {
       invoiceNumber: "10204",
       relatedTo: "Commercial Press",
       closeDate: "Jun 29, 2022",
-      isChecked: false,
     },
     {
       invoiceNumber: "12945",
       relatedTo: "Feltz printing service",
       closeDate: "July 5, 2022",
-      isChecked: true,
     },
     {
       invoiceNumber: "12356",
       relatedTo: "King",
       closeDate: "July 1, 2022",
-      isChecked: false,
     },
     {
       invoiceNumber: "19853",
       relatedTo: "Commercial Press",
       closeDate: "Jun 29, 2022",
-      isChecked: false,
     },
   ];
 
   const tbody = $(".invoice-container table tbody");
-  tbody.empty(); // Clear existing rows
+  tbody.empty();
 
   invoiceData.forEach(function (item) {
     const checkboxHtml = item.isChecked
@@ -167,4 +165,63 @@ $(document).ready(function () {
     `;
     tbody.append(newRow);
   });
+});
+$(document).ready(function () {
+  const recentActivityData = [
+    {
+      clientName: "Kris Marrier",
+      relatedTo: "Commercial Press",
+      closeDate: "Jun 29, 2022",
+    },
+    {
+      clientName: "Capla Paprocki",
+      relatedTo: "Feltz printing service",
+      closeDate: "July 5, 2022",
+    },
+    {
+      clientName: "John",
+      relatedTo: "King",
+      closeDate: "July 1, 2022",
+    },
+    {
+      clientName: "Kris Marrier",
+      relatedTo: "Commercial Press",
+      closeDate: "Jun 29, 2022",
+    },
+  ];
+
+  const tbody = $(".recent-activity-container table tbody");
+  tbody.empty();
+
+  recentActivityData.forEach(function (item) {
+    const checkboxHtml = item.isChecked
+      ? '<input type="checkbox" checked>'
+      : '<input type="checkbox">';
+
+    const newRow = `
+      <tr>
+        <td data-invoice="number">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            ${checkboxHtml}
+            <span>${item.clientName}</span>
+          </div>
+        </td>
+        <td data-invoice="related">${item.relatedTo}</td>
+        <td data-invoice="close-date">${item.closeDate}</td>
+      </tr>
+    `;
+    tbody.append(newRow);
+  });
+});
+
+$(document).ready(function () {
+  $("main")
+    .find('table thead tr td input[type="checkbox"]')
+    .on("click", function () {
+      const $table = $(this).closest("table");
+      const checked = $(this).prop("checked");
+      $table
+        .find('tbody tr td:first-child input[type="checkbox"]')
+        .prop("checked", checked);
+    });
 });

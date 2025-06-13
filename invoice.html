@@ -11,7 +11,13 @@
 </head>
 
 <body>
-
+    <nav class="mob">
+        <button class="hamburger" style="display:none;">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
     <aside class="sidebar-container">
         <nav class="navbar">
             <ul>
@@ -80,7 +86,7 @@
     <main>
         <div class="total-count-container">
             <div class="total-views">
-                <div>
+                <div class="card-body">
                     <h2>
                         34.554K
                     </h2>
@@ -93,7 +99,7 @@
                 </div>
             </div>
             <div class="total-profit">
-                <div>
+                <div class="card-body">
                     <h2>
                         34.554K
                     </h2>
@@ -106,7 +112,7 @@
                 </div>
             </div>
             <div class="total-products">
-                <div>
+                <div class="card-body">
                     <h2>
                         34.554K
                     </h2>
@@ -119,7 +125,7 @@
                 </div>
             </div>
             <div class="total-users">
-                <div>
+                <div class="card-body">
                     <h2>
                         34.554K
                     </h2>
@@ -132,7 +138,7 @@
                 </div>
             </div>
             <div class="total-search">
-                <div>
+                <div class="card-body">
                     <h2>
                         34.554K
                     </h2>
@@ -145,7 +151,7 @@
                 </div>
             </div>
         </div>
-        <div class="bill-information">
+        <div class="bill-information-container">
             <h3>
                 Bill Information
             </h3>
@@ -153,7 +159,10 @@
                 <thead>
                     <tr>
                         <td>
-                            Client Name
+                            <input type="checkbox">
+                            <span>
+                                Client Name
+                            </span>
                         </td>
                         <td>
                             Related To
@@ -175,8 +184,6 @@
                 <tbody>
                     <tr>
                         <td data-client="name">
-                            <img src="assets/images/icons.svg" alt="">
-                            <span class="Client Name">
                             </span>
                         </td>
                         <td data-client="related">
@@ -201,7 +208,10 @@
                 <thead>
                     <tr>
                         <td>
-                            Invoice Number
+                            <input type="checkbox">
+                            <span>
+                                Invoice Number
+                            </span>
                         </td>
                         <td>
                             Related To
@@ -214,7 +224,41 @@
                 <tbody>
                     <tr>
                         <td data-client="name">
-                            <img src="assets/images/icons.svg" alt="">
+                            <span class="Client Name">
+                            </span>
+                        </td>
+                        <td data-client="related">
+                        </td>
+                        <td data-client="close-date">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="recent-activity-container">
+            <h3>
+                Recent Activity
+            </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                            <span>
+                                Client Name
+                            </span>
+                        </td>
+                        <td>
+                            Related To
+                        </td>
+                        <td>
+                            Close Date
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-client="name">
                             <span class="Client Name">
                             </span>
                         </td>
@@ -227,9 +271,9 @@
             </table>
         </div>
     </main>
-
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/invoice.js"></script>
+    <script src="assets/js/breadcrumb.js"></script>
 </body>
 
 </html>

@@ -4,9 +4,13 @@ $tertiary-color: #333333;
 $black-color: #090606;
 $primary-bg-color: #FFFFFF;
 $secondary-bg-color: #007DFC;
+$tertiary-bg-color: #F3F6F9;
 $primary-border-color: #E3ECF5;
 $primary-input-border-color: #D7DBDF;
 $primary-error-color: #F15C5C;
+$table-head: #3F4D5E;
+$dark-color: #FFFFFF;
+$dark-bg-color: #090606;
 
 $font-base-size: 16px;
 $font-base-sm: 14px;
@@ -18,3 +22,12 @@ $spacing-xl : 32px;
 
 $border-radius-base: 4px;
 $primary-box-shadow: 0px 4px 12px #9FACC629;
+
+// $status-opened-bg: #FFF2EC;
+$status-opened: #FF814F;
+// $status-completed-bg: #FFF2EC;
+$status-completed: #9969C5;
+// $status-not-started-bg: #FF814F;
+$status-not-started: #FF814F;
+// $status-started-bg: #FF814F;
+$status-started: #FF814F;

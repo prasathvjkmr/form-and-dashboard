@@ -1,6 +1,95 @@
 @use '../abstracts/variables' as variables;
 @use '../abstracts/mixins' as icon;
 
+%checkbox-style {
+    width: variables.$spacing-md;
+    height: variables.$spacing-md;
+}
+
+$status-props: (
+    open : variables.$status-opened,
+    completed : variables.$status-completed,
+    not-started : variables.$status-not-started,
+    started : variables.$status-started
+);
+
+%table-style {
+    h3:has(+table) {
+        padding: variables.$spacing-lg;
+        color: variables.$black-color;
+    }
+
+    table {
+        border-spacing: 0;
+        width: 100%;
+
+        thead {
+            background-color: variables.$tertiary-bg-color;
+            background-clip: padding-box;
+
+            tr td {
+
+                input[type='checkbox'] {
+                    @extend %checkbox-style;
+                    margin-right: variables.$spacing-sm;
+                }
+
+                padding-inline: variables.$spacing-lg;
+                padding-block: variables.$spacing-sm * 1.5;
+                color: variables.$table-head;
+                font-weight: 600;
+            }
+        }
+
+        tbody {
+            padding-bottom: variables.$spacing-lg;
+
+            tr td {
+                padding-block: variables.$spacing-lg;
+                padding-inline: variables.$spacing-lg;
+                color: variables.$table-head;
+                border-bottom: 1px solid variables.$primary-border-color;
+
+                input[type='checkbox'] {
+                    @extend %checkbox-style;
+                }
+
+                .client-name-cell {
+                    display: flex;
+                    align-items: center;
+                    gap: variables.$spacing-sm;
+
+                    .client-initials {
+                        background-color: variables.$secondary-color;
+                        color: variables.$primary-bg-color;
+                        @include icon.icon-size(24px);
+                        border-radius: 50%;
+                        @include icon.verical-horizontal-center(flex, center, center);
+                    }
+                }
+
+                &:first-child {
+                    color: variables.$black-color;
+                    font-weight: 600;
+                }
+
+                @each $status, $status-color in $status-props {
+                    &[status-data=#{$status}] {
+                        color: $status-color;
+
+                        span {
+                            padding: variables.$spacing-sm;
+                            background-color: rgba($color: $status-color, $alpha: 0.1);
+                            border-radius: variables.$border-radius-base;
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 $dashboard-icons-positions: (
     'views' : 2px,
     'profit' : -102px,
@@ -11,10 +100,16 @@ $dashboard-icons-positions: (
 
 main {
     padding: variables.$spacing-lg;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: variables.$spacing-lg;
 
     .total-count-container {
+        width: 100%;
         display: flex;
-        justify-content: space-between;
+        gap: variables.$spacing-lg;
+        flex-wrap: wrap;
 
         div[class^='total-'] img {
             @include icon.icon-size(68px);
@@ -36,9 +131,35 @@ main {
             border-radius: variables.$border-radius-base + 6px;
             box-shadow: variables.$primary-box-shadow;
 
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                gap: variables.$spacing-sm;
+                font-weight: 500;
+            }
+
             h2 {
                 color: variables.$black-color;
             }
+
+            span {
+                color: variables.$table-head;
+            }
         }
+    }
+
+    .bill-information-container,
+    .invoice-container,
+    .recent-activity-container {
+        width: 100%;
+        border-radius: variables.$border-radius-base * 2.5;
+        border: 1px solid variables.$primary-border-color;
+        box-shadow: variables.$primary-box-shadow;
+        @extend %table-style;
+    }
+
+    .invoice-container,
+    .recent-activity-container {
+        flex: 1;
     }
 }

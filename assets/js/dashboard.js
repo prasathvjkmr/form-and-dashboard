@@ -25,6 +25,7 @@ $(document).ready(function () {
     .click(function () {
       selectedTheme = $(this).attr("class");
       console.log(selectedTheme);
+      $("body").attr("theme", selectedTheme);
       $(".theme-select-option").removeClass("show");
       $(".theme-selected").children("img").attr("alt", selectedTheme);
     });

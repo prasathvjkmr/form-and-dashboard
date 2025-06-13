@@ -6,12 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usage | IDRIVE</title>
     <link rel="stylesheet" href="assets/sass/style.css">    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>
-        Usage
-    </h1>
+    <aside class="sidebar-container">
+        <nav class="navbar">
+            <ul>
+                <li>
+                    <a href="dashboard.html">
+                        <img src="assets/images/logo.svg" alt="IDRIVE" />
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboard.html">
+                        <img src="assets/images/icons.svg" alt="Dashboard" />
+                        <span>Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="invoice.html"><img src="assets/images/icons.svg" alt="Invoice" /><span>Invoice</span></a>
+                </li>
+                <li>
+                    <a href="sales.html"><img src="assets/images/icons.svg" alt="Sales" /><span>Sales</span></a>
+                </li>
+                <li>
+                    <a href="usage.html"><img src="assets/images/icons.svg" alt="Usage" /><span>Usage</span></a>
+                </li>
+                <li>
+                    <a href="chat.html"><img src="assets/images/icons.svg" alt="Chat" /><span>Chat</span></a>
+                </li>
+                <li>
+                    <a href="history.html"><img src="assets/images/icons.svg" alt="History" /><span>History</span></a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    <header>
+        <div>
+            <h1 class="title">
+            </h1>
+        </div>
+        <div class="header-right">
+            <form class="search-form">
+                <input type="search" name="search" id="search" placeholder="Search">
+            </form>
+            <div class="theme-select">
+                <div class="theme-selected">
+                    <img src="assets/images/icons.svg" alt="light">
+                </div>
+                <div class="theme-select-option">
+                    <div class="light">
+                        <img src="assets/images/icons.svg" alt="light"> <span>Light</span>
+                    </div>
+                    <div class="dark">
+                        <img src="assets/images/icons.svg" alt="dark"> <span>Dark</span>
+                    </div>
+                    <div class="auto">
+                        <img src="assets/images/icons.svg" alt="auto"> <span>Auto</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="notification.html" class="header-notification-icon">
+                <img src="assets/images/icons.svg" alt="Notification">
+            </a>
+            <a href="profile.html" class="header-profile-icon">
+                <img src="assets/images/icons.svg" alt="Profile">
+            </a>
+        </div>
+    </header>
+    <script src="assets/js/dashboard.js"></script>
 </body>
 
 </html>

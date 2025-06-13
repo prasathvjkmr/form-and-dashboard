@@ -1,5 +1,6 @@
 @use '../themes' as theme;
 @use '../abstracts/' as variables;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 $primary-font-stack : ('Roboto', san-serif);
 $secondary-font-stack : ('Open Sans', san-serif);

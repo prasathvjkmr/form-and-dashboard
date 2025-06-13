@@ -6,6 +6,8 @@ header {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid variables.$primary-border-color;
+    background-color: variables.$primary-bg-color;
+    box-shadow: variables.$primary-box-shadow;
 
     .title {
         text-transform: capitalize;
